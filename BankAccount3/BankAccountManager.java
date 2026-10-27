@@ -23,7 +23,9 @@ public class BankAccountManager implements Bank {
     if (accounts.size() >= MAX_ACCOUNTS) {
      throw new IllegalStateException("Cannot add account: maximum of 100 accounts reached.");
     }
-     accounts.put(id++, account);
+    int assignedId = id++;
+    accounts.put(assignedId, account);
+    System.out.printf("Account added successfully with ID: %d%n", assignedId);
     return account;
   }
 
@@ -45,7 +47,7 @@ public class BankAccountManager implements Bank {
       String ownerName = account instanceof SavingsAccount
           ? ((SavingsAccount) account).getOwnerName()
           : "Unknown";
-      System.out.printf("ID: %d, Owner: %s, Balance: %.2f%n",
+      System.out.printf("Account ID: %d, Account Name: %s, Balance: %.2f%n",
           entry.getKey(), ownerName, account.getBalance());
     }
   }

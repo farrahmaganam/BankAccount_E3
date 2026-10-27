@@ -58,7 +58,6 @@ public class Main {
           String ownerName = scanner.nextLine().trim();
           try {
             currentAccount = bank.addAccount(new SavingsAccount(ownerName));
-            System.out.println("Account added successfully.");
           } catch (IllegalStateException exception) {
             System.out.println(exception.getMessage());
           }
